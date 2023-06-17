@@ -1,2 +1,2 @@
 # EcuabCanTrcv
-ECU abstraction layer for CAN Transceiver
+ECU abstraction layer for Controller area network communication protocol Transceiver

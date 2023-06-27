@@ -28,6 +28,9 @@
 #include "CfgEcuabCanTrcv.h"
 #include "infEcuabCanTrcvEcuabCanIf.h"
 
+#include "infMcalDioEcuabCanTrcv.h"
+#include "clocksX.h" //TBD: Remove for modularity
+
 /******************************************************************************/
 /* #DEFINES                                                                   */
 /******************************************************************************/
@@ -57,8 +60,7 @@
 /******************************************************************************/
 FUNC(boolean, ECUABCANTRCV_CODE) EcuabCanTrcvEcuabCanIf_GetFlagWakeup(void){
    boolean bRetVal;
-   if(GPIO_input_read(
-      GPIO_ERR_TJA) == 0){
+   if(0 == McalDio_ReadChannel(GPIO_ERR_TJA)){
       bRetVal = TRUE;
    }
    else{
@@ -68,8 +70,8 @@ FUNC(boolean, ECUABCANTRCV_CODE) EcuabCanTrcvEcuabCanIf_GetFlagWakeup(void){
 }
 
 FUNC(void, ECUABCANTRCV_CODE) EcuabCanTrcvEcuabCanIf_SetModeNormal(void){
-   GPIO_output_on(GPIO_STB_TJA);
-   GPIO_output_on(GPIO_EN_TJA);
+   McalDio_WriteChannel_ON(GPIO_STB_TJA);
+   McalDio_WriteChannel_ON(GPIO_EN_TJA);
 }
 
 FUNC(void, ECUABCANTRCV_CODE) EcuabCanTrcvEcuabCanIf_SetModeStandby(void){

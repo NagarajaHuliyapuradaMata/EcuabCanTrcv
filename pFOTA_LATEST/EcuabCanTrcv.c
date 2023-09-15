@@ -9,20 +9,20 @@ extern "C"
 static void WaitHard(uint32 ulMicroSeconds);
 
 void EcuabTrcv_Standby(void){
-  GPIO_output_off(GPIO_EN_TJA);
+  McalDio_output_off(GPIO_EN_TJA);
   WaitHard(20);
-  GPIO_output_off(GPIO_STB_TJA);
+  McalDio_output_off(GPIO_STB_TJA);
   WaitHard(20);
 }
 
 void EcuabTrcv_Normal(void){
-  GPIO_output_on(GPIO_STB_TJA);
-  GPIO_output_on(GPIO_EN_TJA);
+  McalDio_output_on(GPIO_STB_TJA);
+  McalDio_output_on(GPIO_EN_TJA);
 }
 
 boolean EcuabTrcv_GetWakeupFlag(void){
   boolean bRetVal;
-  if(GPIO_input_read(GPIO_ERR_TJA) == 0){
+  if(McalDio_input_read(GPIO_ERR_TJA) == 0){
     bRetVal = TRUE;
   }
   else{

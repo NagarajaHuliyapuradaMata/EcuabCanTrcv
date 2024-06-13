@@ -1,7 +1,7 @@
 #ifndef _CANTRCV_H
 #define _CANTRCV_H
 
-#include "Type_EcuabTrcvCan.hpp"
+#include "Types_EcuabTrcvCan.hpp"
 
 extern void    TRCV_Standby       (void);
 extern void    TRCV_Normal        (void);
